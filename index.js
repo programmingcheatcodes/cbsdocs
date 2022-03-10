@@ -1,7 +1,9 @@
 const express = require("express");
 
 const app = express();
-const importData = require("./data.json");
+const importCorrData = require("./data.json");
+const importTranData = require("./transactionentry.json");
+
 let port = process.env.PORT || 3000;
 
 app.get("/",(req, res)=>{
@@ -9,10 +11,13 @@ app.get("/",(req, res)=>{
 });
 
 
-app.get("/teams",(req, res)=>{
-    res.send(importData);
+app.get("/edatacorrector",(req, res)=>{
+    res.send(importCorrData);
 });
 
+app.get("/etran",(req, res)=>{
+    res.send(importTranData);
+});
 
 app.listen(port,()=>{
     console.log(`Listening at port ${port}`);
